@@ -1,8 +1,15 @@
 # GUESS THE NUMBER ---- >
 
+print("If your choiced value is same as the computer chosen then you will be a winner !!!")
+
+
+# Selection if range -- >
+
+rng = int (input("Select range(assuming starting value is 1) = "))
+
 num_list = []
 
-for i in range (1,101) :
+for i in range (1,(rng+1)) :
     num_list.append(i)
     i += 1
 
@@ -16,8 +23,11 @@ comp_choice = comp_fn ()
 
 # user input -- >
 
-print("If your choiced value is same as the computer chosen then you will be a winner !!!")
-user_choice = int(input("Select any random number in range(1-100) = "))
+
+
+n = int (input ("No. of attempt you challenge the computer to win = "))
+
+user_choice = int(input("Select any random number in your range = "))
 
 attempt = 0
 
@@ -25,21 +35,24 @@ attempt = 0
 
 while True :
     attempt += 1
-    if (comp_choice == user_choice) :
+    if (attempt > n ) :
+        print (f"You did'nt complete your game in {n} attempts!")
+        break 
+    elif (comp_choice == user_choice) :
         print(f"Hurrah ! You win the game at {attempt} attempt as computer also choosed {comp_choice}  ")
         break
-    elif (user_choice > 100):
-        print(f"Entered value is greater than 100 which is not in range of 1-100.Restart the game !!!")
+    elif (user_choice > rng):
+        print(f"Entered value is not in range of {rng}.Restart the game !!!")
         break
     elif (user_choice < 1):
-        print(f"Entered value is smaller than 1 which is not in range of 1-20.Restart the game !!!")
+        print(f"Entered  is not in range of {rng}.Restart the game !!!")
         break
     elif (comp_choice > user_choice) :
-        print(f"Oops! your chosen value is smaller than computer choosen value.So choose that value which is greater than {user_choice}")
-        user_choice = int(input("Now choose that value which should be greater than your previous value = "))
+        print(f"Oops! your chosen value is smaller than computer choosen value.")
+        user_choice = int(input("Try again = "))
     elif (comp_choice < user_choice) :
-        print(f"Oops! your chosen value is greater than computer choosen value.So choose that value which is smaller than {user_choice}")
-        user_choice = int(input("Now choose that value which should be smaller than your previous value = "))
+        print(f"Oops! your chosen value is greater than computer choosen value.")
+        user_choice = int(input("Try again  = "))
     
 print("---GAME OVER---")
     
